@@ -1,3 +1,17 @@
+
+### Install dependencies
+```bash
+  yarn
+  OR
+  npm install
+```
+### Run app
+```bash
+  yarn dev
+  OR
+  npm run dev
+```
+
 ### To run MongoDB using Docker, use the following command: 
 ```bash
 docker run -d \
