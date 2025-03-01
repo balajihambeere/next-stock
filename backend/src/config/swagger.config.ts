@@ -19,7 +19,10 @@ const swaggerDefinition = {
 
 const options = {
     swaggerDefinition,
-    apis: ['./src/modules/sector/*.ts'], // Path to your route files
+    apis: ['./src/modules/sector/*.ts',
+        './src/modules/auth/*.ts',
+        './src/modules/user/*.ts',
+    ], // Path to your route files
 };
 
 const swaggerSpec = swaggerJSDoc(options);

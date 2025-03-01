@@ -58,7 +58,7 @@ class SectorRoute {
      *       400:
      *         description: Invalid input
      */
-    this.routes.post("/sectors", this.sectorController.add);
+    this.routes.post("/", this.sectorController.add);
 
     /**
      * @swagger
@@ -76,7 +76,7 @@ class SectorRoute {
      *               items:
      *                 $ref: '#/components/schemas/Sector'
      */
-    this.routes.get('/sectors', this.sectorController.getAll);
+    this.routes.get('/', this.sectorController.getAll);
 
     /**
      * @swagger
@@ -101,7 +101,7 @@ class SectorRoute {
      *       404:
      *         description: Sector not found
      */
-    this.routes.get('/sectors/:id', this.sectorController.getById);
+    this.routes.get('/:id', this.sectorController.getById);
 
     /**
      * @swagger
@@ -132,7 +132,7 @@ class SectorRoute {
      *       404:
      *         description: Sector not found
      */
-    this.routes.put('/sectors/:id', this.sectorController.update);
+    this.routes.put('/:id', this.sectorController.update);
 
     /**
      * @swagger
@@ -153,7 +153,7 @@ class SectorRoute {
      *       404:
      *         description: Sector not found
      */
-    this.routes.delete('/sectors/:id', this.sectorController.delete);
+    this.routes.delete('/:id', this.sectorController.delete);
   }
 }
 
