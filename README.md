@@ -55,7 +55,7 @@ Package and run applications in isolated containers,
     OR
     npm install
 ```
-4. Run the FastAPI server:
+4. Run the Express server:
 ```bash
     yarn dev
 ```
