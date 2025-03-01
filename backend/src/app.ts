@@ -5,6 +5,8 @@ import routes from "./app.routes";
 import mongoose from "mongoose";
 import { clientErrorHandler, errorHandler, logging } from "./utils/ErrorHandler";
 import { setupSwagger } from "./config/swagger.config";
+import dotenv from 'dotenv';
+dotenv.config();
 
 interface DatabaseConfig {
     url: string;
