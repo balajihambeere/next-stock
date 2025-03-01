@@ -1,8 +1,8 @@
 
 import { Request, Response } from "express";
 import AppConstants from "./src/utils/AppConstants";
-import app from "./src/app";
-
+import createApp from "./index";
+const app = createApp()
 app.get("/", (_req: Request, res: Response) => {
     res.send("App is running");
 })

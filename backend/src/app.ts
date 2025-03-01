@@ -1,50 +1,87 @@
 import bodyParser from "body-parser";
-import express, { Request, Response, NextFunction } from "express";
+import express, { Request, Response, NextFunction, Application } from "express";
 import cors from "cors";
 import routes from "./app.routes";
 import mongoose from "mongoose";
 import { clientErrorHandler, errorHandler, logging } from "./utils/ErrorHandler";
 import { setupSwagger } from "./config/swagger.config";
 
+interface DatabaseConfig {
+    url: string;
+}
+
+export interface AppConfig {
+    database: DatabaseConfig;
+}
+
+export interface AppDependencies {
+    express: Application;
+    config: AppConfig;
+}
+
 class App {
-    public app: express.Application;
-    constructor() {
-        this.app = express();
+    private app: Application;
+    private config: AppConfig;
+
+    constructor(dependencies: AppDependencies) {
+        this.app = dependencies.express;
+        this.config = dependencies.config;
+        this.initializeMiddlewares();
+        this.initializeRoutes();
+        this.initializeErrorHandling();
+        this.initializeDatabase();
+    }
+
+    private initializeMiddlewares(): void {
         this.app.use(cors());
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(bodyParser.json());
         // this.app.use(this.contentTypeValidation);
         // this.app.use(this.acceptHeaderValidation);
-
-        // Setup Swagger
         setupSwagger(this.app as express.Express);
+    }
+
+    private initializeRoutes(): void {
         this.app.use('/api', routes);
-        this.dbConnection();
+    }
+
+    private initializeErrorHandling(): void {
         this.app.use(logging);
         this.app.use(clientErrorHandler);
         this.app.use(errorHandler);
     }
 
-    private contentTypeValidation = (req: Request, res: Response, next: NextFunction) => {
-        var contentType = req.headers['content-type'];
-        if (!contentType || contentType.indexOf('application/json') !== 0)
-            return res.sendStatus(415);
+    private initializeDatabase(): void {
+        mongoose.connect(this.config.database.url)
+            .then(() => {
+                console.log('Connected to MongoDB');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    private contentTypeValidation = (req: Request, res: Response, next: NextFunction): void => {
+        const contentType = req.headers['content-type'];
+        if (!contentType || contentType.indexOf('application/json') !== 0) {
+            res.sendStatus(415);
+            return;
+        }
         next();
     }
 
-    private acceptHeaderValidation = (req: Request, res: Response, next: NextFunction) => {
-        var contentType = req.headers['accept'];
-        if (!contentType || contentType.indexOf('application/json') !== 0)
-            return res.sendStatus(406);
+    private acceptHeaderValidation = (req: Request, res: Response, next: NextFunction): void => {
+        const contentType = req.headers['accept'];
+        if (!contentType || contentType.indexOf('application/json') !== 0) {
+            res.sendStatus(406);
+            return;
+        }
         next();
     }
-    private dbConnection = () => {
-        mongoose.connect('mongodb://127.0.0.1:27017/salesdb').then(() => {
-            console.log('Connected to MongoDB');
-        }).catch((error) => {
-            console.log(error);
-        });
+
+    public getApp(): Application {
+        return this.app;
     }
 }
 
-export default new App().app;
+export default App;

@@ -2,12 +2,13 @@ import { NextFunction, Request, Response } from "express";
 import { ResponseModel } from "../../utils/ResponseModel";
 import { SectorConstants } from "./sector.constants";
 import mongoose from "mongoose";
-import { CustomerModel } from "./sector.model";
+import { SectorModel } from "./sector.model";
 
 class SectorController {
     add = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
         try {
-            const newTask = new CustomerModel(req.body.data);
+
+            const newTask = new SectorModel(req.body);
             await newTask.save();
             res.status(201).send({
                 success: true,
@@ -31,7 +32,7 @@ class SectorController {
             const sortOrderValue: mongoose.SortOrder = sortOrder === 'asc' || sortOrder === 'desc' ? sortOrder : 'asc';
             // const fieldName = field === "lastName" ? { lastName: sortOrderValue } : { firstName: sortOrderValue };
 
-            const result = await CustomerModel.find()
+            const result = await SectorModel.find()
                 .limit(pageSize)
                 .skip(pageSize * pageNumber)
                 .sort({ lastName: sortOrderValue });
@@ -57,16 +58,16 @@ class SectorController {
 
     getById = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
         try {
-            const customerId = req.params.customerId;
-            if (!mongoose.isValidObjectId(customerId)) {
+            const sectorId = req.params.id;
+            if (!mongoose.isValidObjectId(sectorId)) {
                 return next({
                     success: false,
-                    message: "Please send a valid Sector ID",
+                    message: "Please send a valid sector id",
                     StatusCode: 400
                 } as ResponseModel);
             }
 
-            const result = await CustomerModel.findById(customerId);
+            const result = await SectorModel.findById(sectorId);
             if (!result) {
                 return res.status(404).send({
                     success: false,
@@ -92,20 +93,20 @@ class SectorController {
 
     update = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
         try {
-            const customerId = req.params.customerId;
-            if (!mongoose.isValidObjectId(customerId)) {
+            const sectorId = req.params.id;
+            if (!mongoose.isValidObjectId(sectorId)) {
                 return next({
                     success: false,
-                    message: "Please send a valid Customer ID",
+                    message: "Please send a valid sector id",
                     StatusCode: 400
                 } as ResponseModel);
             }
 
-            const result = await CustomerModel.findByIdAndUpdate(customerId, req.body, { new: true });
+            const result = await SectorModel.findByIdAndUpdate(sectorId, req.body, { new: true });
             if (!result) {
                 return next({
                     success: false,
-                    message: `Customer does not exist with ID: ${customerId}`,
+                    message: `Sector does not exist with ID: ${sectorId}`,
                     StatusCode: 400
                 } as ResponseModel);
             }
@@ -127,27 +128,27 @@ class SectorController {
 
     delete = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
         try {
-            const customerId = req.params.customerId;
-            if (!mongoose.isValidObjectId(customerId)) {
+            const sectorId = req.params.id;
+            if (!mongoose.isValidObjectId(sectorId)) {
                 return next({
                     success: false,
-                    message: `Not a valid Customer ID: ${customerId}`,
+                    message: `Not a valid sector Id: ${sectorId}`,
                     StatusCode: 400
                 } as ResponseModel);
             }
 
-            const customer = await CustomerModel.findById(customerId);
-            if (!customer) {
+            const sector = await SectorModel.findById(sectorId);
+            if (!sector) {
                 return res.sendStatus(404);
             }
 
-            const result = await CustomerModel.deleteOne({ _id: customerId });
+            const result = await SectorModel.deleteOne({ _id: sectorId });
             if (result.deletedCount > 0) {
                 return res.sendStatus(204);
             } else {
                 return res.status(400).send({
                     success: false,
-                    message: "Customer not deleted",
+                    message: "Sector not deleted",
                     StatusCode: 400
                 } as ResponseModel);
             }

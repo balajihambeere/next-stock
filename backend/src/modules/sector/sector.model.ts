@@ -13,4 +13,4 @@ const SectorsSchema = new BaseSchema<Sector>({
     },
 });
 
-export const CustomerModel = model<Sector>('Sectors', SectorsSchema);
+export const SectorModel = model<Sector>('Sectors', SectorsSchema);

@@ -15,7 +15,7 @@
 ### To run MongoDB using Docker, use the following command: 
 ```bash
 docker run -d \
-  --name raptaidb \
+  --name nextstockdb \
   -p 27017:27017 \
   -e MONGO_INITDB_ROOT_USERNAME=admin \
   -e MONGO_INITDB_ROOT_PASSWORD=adminpassword \
