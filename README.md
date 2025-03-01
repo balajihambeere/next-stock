@@ -39,8 +39,7 @@ Package and run applications in isolated containers,
 ### Prerequisites
 
 - Ensure you have the following installed:
-- Node.js (for frontend development)
-- Node.js 20.0+ (for backend development)
+- Node.js 20.0+ (for backend and frontend development)
 - Mongodb (for database management)
 
 ## Backend Setup
@@ -50,19 +49,15 @@ Package and run applications in isolated containers,
     cd raptai
     cd fast-next-app/backend
 ```
-
-2. Create a virtual environment and activate it:
+2. Install dependencies:
 ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
-```
-3. Install dependencies:
-```bash
-    pip install -r requirements.txt
+    yarn 
+    OR
+    npm install
 ```
 4. Run the FastAPI server:
 ```bash
-    uvicorn main:app --reload
+    yarn dev
 ```
 The API should now be running at http://localhost:3200.
 
@@ -75,15 +70,19 @@ The API should now be running at http://localhost:3200.
 2. Install dependencies:
 ```bash
     npm install
+    or
+    yarn
 ```
 3. Start the development server:
 ```bash
     npm run dev
+    OR 
+    yarn dev
 ```
 The application should now be accessible at http://localhost:3000.
 
 ## API Documentation
-FastAPI provides automatic API documentation, which can be accessed at:
+Provides API documentation, which can be accessed at:
 
 - Swagger UI: http://localhost:3200/api-docs/
 
