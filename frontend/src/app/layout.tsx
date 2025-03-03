@@ -14,7 +14,7 @@ import LogRocket from "logrocket";
 export default function RootLayout(props: { children: React.ReactNode }) {
   React.useEffect(() => {
     if (typeof window !== "undefined") {
-      LogRocket.init('uq1ags/nextstock'); // Replace with your LogRocket app ID
+      LogRocket.init(process.env.NEXT_PUBLIC_LOG_ROCKET as string); // Replace with your LogRocket app ID
     }
   }, []);
   return (
