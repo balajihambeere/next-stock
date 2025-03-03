@@ -38,3 +38,18 @@ You can connect to MongoDB using:
 ```bash
 raptaidb://admin:adminpassword@localhost:27017
 ```
+
+## RabbitMq
+```bash
+  docker run -d --name rabbitmq \
+    -p 5672:5672 \
+    -p 15672:15672 \
+    -e RABBITMQ_DEFAULT_USER=myuser \
+    -e RABBITMQ_DEFAULT_PASS=mypassword \
+    rabbitmq:management
+```
+
+## redis
+```bash
+  docker run -d --name redis-server -p 6379:6379 redis
+```
