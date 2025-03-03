@@ -1,6 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from '../features/auth/slice';
 import { authApi } from '@/features/auth/api';
+import LogRocket from "logrocket";
+
+// Create LogRocket middleware
+const logRocketMiddleware = LogRocket.reduxMiddleware();
 
 export const store = configureStore({
     // add auth reducer
@@ -10,6 +14,7 @@ export const store = configureStore({
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({ serializableCheck: false }).concat(
+            logRocketMiddleware,
             authApi.middleware
         ),
 })

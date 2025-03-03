@@ -5,23 +5,32 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from '@/theme';
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
-import ModeSwitch from '@/components/ModeSwitch';
 import { Provider } from 'react-redux'
 import { store } from '@/store/store';
+import ErrorBoundary from '@/components/ErrorBoundary';
+import { ErrorProvider } from '@/components/Error';
+import LogRocket from "logrocket";
 
 export default function RootLayout(props: { children: React.ReactNode }) {
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      LogRocket.init('uq1ags/nextstock'); // Replace with your LogRocket app ID
+    }
+  }, []);
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
         <InitColorSchemeScript attribute="class" />
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
-            <Provider store={store}>
-              {/* <ModeSwitch /> */}
-              {props.children}
-            </Provider>
+            <ErrorBoundary>
+              <Provider store={store}>
+                <ErrorProvider>
+                  {props.children}
+                </ErrorProvider>
+              </Provider>
+            </ErrorBoundary>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

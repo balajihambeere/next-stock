@@ -34,6 +34,12 @@ Package and run applications in isolated containers,
 - Mongodb database integration with optimized queries
 - Deployment-ready architecture that can be easily containerized using Docker
 
+### Implementing robust error handling mechanisms in a React application
+1. Error Boundaries for Component-Level Errors
+2. Handling API Errors
+3. Global Error Handling with Context API
+4. Logging Errors using logrocket
+
 ## Installation and Setup
 
 ### Prerequisites

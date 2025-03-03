@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AuthState, initialAuthState, RegisterResponse } from '../types'
+import LogRocket from "logrocket";
 
 
 export const authSlice = createSlice({
@@ -8,6 +9,9 @@ export const authSlice = createSlice({
     reducers: {
         setToken: (state: AuthState, action: PayloadAction<RegisterResponse>) => {
             state.token = action.payload.token
+        },
+        logError: (state, action: PayloadAction<string>) => {
+            LogRocket.captureMessage(action.payload);
         },
     }
 })

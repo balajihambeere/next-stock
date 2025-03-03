@@ -38,3 +38,5 @@ yarn-error.log*
 certificates
 
 .env
+
+docs.md

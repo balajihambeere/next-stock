@@ -18,6 +18,7 @@
     "@mui/material-nextjs": "next",
     "@reduxjs/toolkit": "^2.6.0",
     "add": "^2.0.6",
+    "logrocket": "^9.0.2",
     "next": "^15.0.0",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
