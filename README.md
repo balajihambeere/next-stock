@@ -10,6 +10,8 @@ This repository contains a full-stack web application built using modern technol
 - **Next.js**: A React framework that enables server-side rendering (SSR) and static site generation (SSG) for better performance and SEO.
 - **Material-UI**: A React UI framework that provides pre-built, customizable components following Google's Material Design principles.
 - **Redux-Toolkit**: A state management library that simplifies Redux development with a more efficient and structured approach.
+- **LogRocket**: Log errors to a remote logging service using LogRocket for monitoring and debugging.
+- **NextAuth**: provides a simple, flexible, and secure way to implement authentication in Next.js applications,
 
 ### Backend
 
