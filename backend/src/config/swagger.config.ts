@@ -21,12 +21,11 @@ const options = {
     swaggerDefinition,
     apis: ['./src/modules/sector/*.ts',
         './src/modules/auth/*.ts',
-        './src/modules/user/*.ts',
         './src/app.routes.ts'
     ], // Path to your route files
 };
 
-const swaggerSpec = swaggerJSDoc(options);
+export const swaggerSpec = swaggerJSDoc(options);
 
 export const setupSwagger = (app: Express) => {
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
