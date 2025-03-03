@@ -42,21 +42,20 @@ Package and run applications in isolated containers,
 - Material-UI components for a modern and responsive UI design
 - Mongodb database integration with optimized queries
 - Deployment-ready architecture that can be easily containerized using Docker
+- Implementing robust error handling mechanisms in a React application
+    1. Error Boundaries for Component-Level Errors
+    2. Handling API Errors
+    3. Global Error Handling with Context API
+    4. Logging Errors using logrocket
+- Implementing cache solutions using Redis
+    - caching large amounts of data in redis cache
+- Implementing message queue solutions using RabbitMQ
+    - Use message queues for asynchronous communication between services, ensuring decoupling and reliability.
+- Circuit Breaker Pattern
+    - Prevent a network or service failure from cascading to other services.
+- clustering strategies
+    - Implementing clustering strategies for enhancing application performance and fault tolerance.
 
-### Implementing robust error handling mechanisms in a React application
-1. Error Boundaries for Component-Level Errors
-2. Handling API Errors
-3. Global Error Handling with Context API
-4. Logging Errors using logrocket
-
-### Implementing cache solutions using Redis
-- caching large amounts of data in redis cache
-
-### Implementing message queue solutions using RabbitMQ
-- Use message queues for asynchronous communication between services, ensuring decoupling and reliability.
-
-#### Implementing Circuit Breaker Pattern
-- Prevent a network or service failure from cascading to other services.
 
 ## Installation and Setup
 
