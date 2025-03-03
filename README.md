@@ -16,6 +16,15 @@ This repository contains a full-stack web application built using modern technol
 - **Typescript**: A high-level programming language known for its simplicity and versatility.
 - **Express.Js**: A modern web framework for building APIs high performance.
 - **Node.js**: A free, open-source, cross-platform JavaScript runtime environment that lets developers create servers, web apps, command line tools and scripts.
+- **Compression** : Compression middleware reduces the size of HTTP responses sent from your ExpressJS server to clients, such as web browsers or mobile devices.
+- **amqplib**: Used to create clients for Advanced Message Queuing Protocol (AMQP).
+- **bcryptjs**: allowing you to use the hash encryption.
+- **Cockatiel**: Cockatiel is resilience and transient-fault-handling library that allows developers to express policies such as Retry, Circuit Breaker, Timeout, Bulkhead Isolation, and Fallback.
+- **CORS**: CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options
+- **helmet**: Help secure Express apps by setting HTTP response headers.
+- **Ioredis**: Ioredis is a Redis client for Node.js
+- **Jsonwebtoken**: Provides developers with an easy to use library to generate JSON Web Tokens that can be used in authentication and authorization tasks
+- **Mongoose**: Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.
 
 ### Database
 
@@ -40,11 +49,14 @@ Package and run applications in isolated containers,
 3. Global Error Handling with Context API
 4. Logging Errors using logrocket
 
-### Implement cache solutions using Redis
+### Implementing cache solutions using Redis
 - caching large amounts of data in redis cache
 
-### Implement message queue solutions using RabbitMQ
+### Implementing message queue solutions using RabbitMQ
 - Use message queues for asynchronous communication between services, ensuring decoupling and reliability.
+
+#### Implementing Circuit Breaker Pattern
+- Prevent a network or service failure from cascading to other services.
 
 ## Installation and Setup
 
