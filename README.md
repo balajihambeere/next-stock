@@ -40,6 +40,12 @@ Package and run applications in isolated containers,
 3. Global Error Handling with Context API
 4. Logging Errors using logrocket
 
+### Implement cache solutions using Redis
+- caching large amounts of data in redis cache
+
+### Implement message queue solutions using RabbitMQ
+- Use message queues for asynchronous communication between services, ensuring decoupling and reliability.
+
 ## Installation and Setup
 
 ### Prerequisites

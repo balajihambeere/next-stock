@@ -3,7 +3,34 @@ import { Request, Response } from "express";
 import AppConstants from "./src/utils/AppConstants";
 import createApp from "./index";
 import { Server } from "http";
+import combinedPolicy from "./src/circuitBreaker";
 const app = createApp()
+
+
+// Example of implementing circuit breaker for an external service call
+// app.get("/api/external-service", async (req: Request, res: Response) => {
+//     try {
+//         const result = await combinedPolicy.execute(async () => {
+//             // Your external service call here
+//             const response = await fetch('https://external-api.example.com/data');
+//             if (!response.ok) {
+//                 throw new Error('Service unavailable');
+//             }
+//             return response.json();
+//         });
+
+//         res.json(result);
+//     } catch (error) {
+//         if (error instanceof Error) {
+//             res.status(503).json({
+//                 error: 'Service temporarily unavailable',
+//                 message: error.message
+//             });
+//         }
+//     }
+// });
+
+
 app.get("/", (_req: Request, res: Response) => {
     res.send("App is running");
 })
